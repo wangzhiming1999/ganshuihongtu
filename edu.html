@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>红色研学 · 公益同行 — 赣水红途</title>
+<meta name="description" content="赣水红途公益研学：小小讲解员培训、旧址志愿讲解、红色研学营、校园红色课堂，面向青少年与志愿者全程免费开放。">
+<link rel="icon" type="image/png" href="assets/favicon-48.png">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* 研学项目卡：编号编辑风 */
+.program {
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: clamp(36px, 6vw, 90px); align-items: center;
+  padding: clamp(48px, 7vw, 88px) 0;
+  border-top: 1px solid var(--line);
+}
+.program:first-of-type { border-top: none; }
+.program.flip .p-media { order: 2; }
+.program.flip .p-text { order: 1; }
+.p-media { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 22px 56px rgba(43,29,24,.17); }
+.p-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease-out); }
+.program:hover .p-media img { transform: scale(1.05); }
+.p-text .p-no {
+  font-family: Georgia, serif; font-size: 15px; color: var(--china-red); letter-spacing: 3px; font-weight: 700;
+}
+.p-text h3 {
+  font-family: var(--font-serif); font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 900; letter-spacing: 3px; margin: 12px 0 6px;
+}
+.p-text .p-en { font-size: 12px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; }
+.p-text .p-quote {
+  font-family: var(--font-serif); font-size: 17px; color: var(--deep-red);
+  margin: 20px 0; line-height: 1.8;
+}
+.p-text .p-quote::before { content: "「"; color: var(--china-red); }
+.p-text .p-quote::after { content: "」"; color: var(--china-red); }
+.p-text p.desc { font-size: 15.5px; color: var(--ink-soft); max-width: 520px; }
+.p-tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
+.p-tags span {
+  font-size: 12.5px; letter-spacing: 1px; color: var(--deep-red);
+  border: 1px solid var(--line-red); padding: 5px 14px; border-radius: 999px;
+}
+/* 流程 */
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); }
+.flow .step {
+  padding: 34px 26px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.flow .step:last-child { border-right: none; }
+.flow .s-no { font-family: Georgia, serif; font-size: 30px; font-weight: 700; color: transparent; -webkit-text-stroke: 1.2px var(--china-red); }
+.flow h4 { font-family: var(--font-serif); font-size: 18px; font-weight: 800; margin: 12px 0 8px; letter-spacing: 1px; }
+.flow p { font-size: 13.5px; color: var(--ink-soft); }
+@media (max-width: 1000px) {
+  .program { grid-template-columns: 1fr; gap: 26px; }
+  .program.flip .p-media { order: 1; }
+  .program.flip .p-text { order: 2; }
+  .flow { grid-template-columns: 1fr 1fr; }
+  .flow .step:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 560px) {
+  .flow { grid-template-columns: 1fr; }
+  .flow .step { border-right: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">⭐ 非营利公益平台 · 弘扬江西红色文化 · 传承革命精神 ⭐</div>
+
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="赣水红途 首页">
+      <img class="logo-img" src="assets/logo-horizontal.svg" alt="赣水红途 logo">
+    </a>
+    <nav class="nav-links">
+      <a href="jinggangshan.html">井冈山</a>
+      <a href="ruijin.html">瑞金</a>
+      <a href="nanchang.html">南昌</a>
+      <a href="yudu.html">于都</a>
+      <a href="stories.html">红色故事</a>
+      <a href="edu.html">研学活动</a>
+    </nav>
+    <a class="nav-cta" href="#join">报名方式</a>
+  </div>
+</header>
+
+<!-- ============ Hero ============ -->
+<section class="page-hero" style="min-height: 56vh;">
+  <div class="hero-bg" style="background:
+    linear-gradient(115deg, rgba(110,13,13,.78) 0%, rgba(140,15,13,.6) 55%, rgba(26,14,12,.72) 100%),
+    url('assets/yanxue.jpg') center 35% / cover no-repeat;"></div>
+  <div class="hero-veil"></div>
+  <div class="vertical-char">让红色基因融入青春</div>
+  <div class="container hero-inner" style="padding: 110px 0 70px;">
+    <div class="hero-kicker" data-anim>红色研学 · 公益同行</div>
+    <h1 class="hero-title" style="font-size: clamp(44px, 7vw, 84px);" data-anim data-anim-delay="120">让红色基因融入青春</h1>
+    <p class="hero-sub" data-anim data-anim-delay="240">
+      四大公益研学项目，面向青少年与志愿者全程免费开放。
+      不收一分钱，只为让更多孩子听见历史的声音。
+    </p>
+  </div>
+</section>
+
+<!-- ============ 项目一 ============ -->
+<section class="chapter" style="padding-bottom:0;">
+  <div class="container">
+
+    <div class="program" data-anim>
+      <div class="p-media"><img src="assets/xiaojiangjieyuan.jpg" alt="小小讲解员培训"></div>
+      <div class="p-text">
+        <div class="p-no">PROJECT 01</div>
+        <h3>小小讲解员培训</h3>
+        <div class="p-en">YOUNG DOCENT PROGRAM</div>
+        <p class="p-quote">用童声讲述峥嵘岁月</p>
+        <p class="desc">面向 8—14 岁少年儿童，与井冈山革命博物馆、瑞金叶坪旧址群等场馆共建。孩子们接受语音表达、历史知识、礼仪规范培训后，持证上岗，在节假日的革命旧址为游客义务讲解。</p>
+        <div class="p-tags">
+          <span>8—14 岁</span><span>周末班 · 寒暑假班</span><span>培训 + 上岗全程免费</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="program flip" data-anim>
+      <div class="p-media"><img src="assets/zhiyuanzhe.jpg" alt="旧址志愿讲解"></div>
+      <div class="p-text">
+        <div class="p-no">PROJECT 02</div>
+        <h3>旧址志愿讲解</h3>
+        <div class="p-en">VOLUNTEER GUIDE PROGRAM</div>
+        <p class="p-quote">把家乡的故事讲给远方来客</p>
+        <p class="desc">面向大学生与青年志愿者。利用周末驻点黄洋界、沙洲坝、长征第一渡等旧址，为游客提供公益讲解。平台提供统一的史料手册与培训，优秀志愿者可参与"红色故事进校园"巡讲。</p>
+        <div class="p-tags">
+          <span>大学生 · 青年</span><span>周末驻点</span><span>可获志愿服务时长认证</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="program" data-anim>
+      <div class="p-media"><img src="assets/yanxue.jpg" alt="红色研学营"></div>
+      <div class="p-text">
+        <div class="p-no">PROJECT 03</div>
+        <h3>红色研学营</h3>
+        <div class="p-en">RED HERITAGE CAMP</div>
+        <p class="p-quote">重走长征路，从于都河畔出发</p>
+        <p class="desc">7 天 6 夜主题研学营：于都集结（夜渡情景课）→ 瑞金（红井 + 二苏大）→ 井冈山（挑粮小道 + 黄洋界）→ 结营仪式。全程由历史专业研究生随队讲解，衣食住行费用由公益基金支持。</p>
+        <div class="p-tags">
+          <span>中学生 · 大学生</span><span>寒暑假各一期</span><span>困难家庭全免</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="program flip" data-anim>
+      <div class="p-media"><img src="assets/ketang.jpg" alt="校园红色课堂"></div>
+      <div class="p-text">
+        <div class="p-no">PROJECT 04</div>
+        <h3>校园红色课堂</h3>
+        <div class="p-en">RED CLASSROOM PROGRAM</div>
+        <p class="p-quote">把历史讲给更多孩子听</p>
+        <p class="desc">与省内中小学共建"红色课堂"：志愿者带着故事、文物复制品和影像资料走进教室，一节课讲一个江西红色故事。已覆盖 40 余所学校，课程包免费向乡村学校开放申领。</p>
+        <div class="p-tags">
+          <span>全学段</span><span>全年开放</span><span>乡村学校优先</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 报名流程 ============ -->
+<section class="chapter">
+  <div class="container">
+    <div class="chapter-head" data-anim>
+      <div class="chapter-no">02</div>
+      <h2 class="chapter-title">如何报名</h2>
+      <p class="chapter-note">全程公益 · 不收取任何费用</p>
+    </div>
+    <div class="flow">
+      <div class="step" data-anim>
+        <div class="s-no">01</div>
+        <h4>选择项目</h4>
+        <p>在上方四个项目中，选择适合自己的那一项。</p>
+      </div>
+      <div class="step" data-anim data-anim-delay="100">
+        <div class="s-no">02</div>
+        <h4>提交报名</h4>
+        <p>通过学校 / 志愿者组织集体报名，或关注平台公众号个人报名。</p>
+      </div>
+      <div class="step" data-anim data-anim-delay="200">
+        <div class="s-no">03</div>
+        <h4>参加培训</h4>
+        <p>线上史料学习 + 线下培训，通过后即可参与。</p>
+      </div>
+      <div class="step" data-anim data-anim-delay="300">
+        <div class="s-no">04</div>
+        <h4>上岗服务</h4>
+        <p>持证上岗 / 入营研学，获得志愿服务时长认证。</p>
+      </div>
+    </div>
+    <div id="join" style="text-align:center; margin-top:56px;" data-anim>
+      <p style="font-size:13px; letter-spacing:4px; color:var(--china-red); font-weight:700; margin-bottom:18px;">报名咨询</p>
+      <p style="font-size:15px; color:var(--ink-soft); max-width:560px; margin:0 auto;">
+        报名通道即将开放。你可以先浏览<a href="stories.html" style="color:var(--china-red); border-bottom:1px solid var(--china-red);">红色故事馆</a>，
+        或到<a href="jinggangshan.html" style="color:var(--china-red); border-bottom:1px solid var(--china-red);">井冈山</a>、
+        <a href="ruijin.html" style="color:var(--china-red); border-bottom:1px solid var(--china-red);">瑞金</a>、
+        <a href="nanchang.html" style="color:var(--china-red); border-bottom:1px solid var(--china-red);">南昌</a>、
+        <a href="yudu.html" style="color:var(--china-red); border-bottom:1px solid var(--china-red);">于都</a>先做功课——历史了解得越多，讲解就越有底气。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页尾导航 ============ -->
+<div class="page-switch">
+  <div class="container ps-inner">
+    <a class="ps-link" href="stories.html">
+      <span class="d">← 上一页</span>
+      <span class="t">红色故事馆</span>
+    </a>
+    <a class="ps-link next" href="index.html">
+      <span class="d">返回 →</span>
+      <span class="t">首页 · 赣水红途</span>
+    </a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <img class="foot-logo" src="assets/logo-horizontal-dark.svg" alt="赣水红途 logo">
+      <p>追寻红军长征足迹 · 讲好江西革命故事<br>井冈山精神 | 苏区精神 | 长征精神</p>
+    </div>
+    <div class="foot-col">
+      <h4>革命圣地</h4>
+      <a href="jinggangshan.html">井冈山</a>
+      <a href="ruijin.html">瑞金</a>
+      <a href="nanchang.html">南昌</a>
+      <a href="yudu.html">于都</a>
+    </div>
+    <div class="foot-col">
+      <h4>红色传承</h4>
+      <a href="stories.html">红色故事</a>
+      <a href="edu.html">研学活动</a>
+      <a href="index.html#about">公益宣言</a>
+    </div>
+    <div class="foot-col">
+      <h4>关于平台</h4>
+      <a href="index.html#about">平台初心</a>
+      <a href="#">内容考据说明</a>
+      <a href="#">加入志愿者</a>
+    </div>
+  </div>
+  <div class="container foot-bottom">
+    <span>© 2026 赣水红途 · 江西红色旅游文化平台（非营利公益项目）</span>
+    <span>红星照赣水 · 初心映山河</span>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

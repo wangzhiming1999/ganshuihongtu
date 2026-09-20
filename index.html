@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>赣水红途 · 江西红色旅游文化平台 — 传红色基因，续精神血脉</title>
+<meta name="description" content="赣水红途：非营利性江西红色旅游文化平台。追寻红军长征足迹，讲好中国共产党在江西的革命故事，传承井冈山精神、苏区精神、长征精神。">
+<link rel="icon" type="image/png" href="assets/favicon-48.png">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* ============ 首页专属 ============ */
+.hero {
+  position: relative; min-height: 88vh;
+  display: flex; align-items: center;
+  background:
+    linear-gradient(115deg, rgba(110, 13, 13, 0.9) 0%, rgba(170, 24, 18, 0.74) 55%, rgba(110, 13, 13, 0.5) 100%),
+    url("assets/jinggangshan.jpg") center 30% / cover no-repeat;
+  color: #fff; overflow: hidden;
+}
+.hero-inner { position: relative; z-index: 2; padding: 120px 0 150px; }
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(48px, 7.5vw, 96px);
+  font-weight: 900; line-height: 1.12; letter-spacing: 8px;
+  text-shadow: 0 6px 40px rgba(0,0,0,.5);
+}
+.hero-title .gold { color: var(--gold); }
+.hero-lead {
+  margin-top: 28px; max-width: 600px;
+  font-size: 17.5px; color: rgba(255,240,226,.92); letter-spacing: 1px;
+}
+.hero-actions { margin-top: 46px; display: flex; gap: 18px; flex-wrap: wrap; }
+
+/* 竖排标语 */
+.hero-vertical {
+  position: absolute; right: clamp(20px, 6vw, 90px); top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-family: var(--font-serif); font-size: clamp(20px, 2.6vw, 34px);
+  letter-spacing: 30px; color: rgba(255, 217, 160, 0.55);
+  z-index: 2; pointer-events: none; font-weight: 700;
+}
+
+/* 数据带 */
+.stats-band { position: relative; z-index: 3; margin-top: -70px; }
+.stats-card {
+  background: #fff; border-radius: var(--radius);
+  box-shadow: 0 18px 50px rgba(140, 15, 13, 0.12);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  padding: 40px 20px;
+}
+.stat { text-align: center; border-right: 1px solid #F0E4DE; }
+.stat:last-child { border-right: none; }
+.stat .num { font-family: Georgia, serif; font-size: 48px; font-weight: 700; color: var(--china-red); font-variant-numeric: tabular-nums; }
+.stat .num span { font-size: 20px; }
+.stat .label { font-size: 13.5px; color: var(--muted); margin-top: 4px; letter-spacing: 2px; }
+
+/* 圣地大卡（编辑风） */
+.city-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 6vw, 90px);
+  align-items: center;
+  padding: clamp(48px, 7vw, 90px) 0;
+  border-top: 1px solid var(--line);
+}
+.city-row:first-of-type { border-top: none; }
+.city-row.flip .c-media { order: 2; }
+.city-row.flip .c-text { order: 1; }
+.c-media {
+  border-radius: var(--radius); overflow: hidden;
+  aspect-ratio: 4/3; box-shadow: 0 24px 60px rgba(43, 29, 24, 0.18);
+  position: relative;
+}
+.c-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease-out); }
+.city-row:hover .c-media img { transform: scale(1.05); }
+.c-no {
+  position: absolute; left: 22px; top: 18px;
+  font-family: Georgia, serif; font-size: 60px; font-weight: 700;
+  color: #fff; text-shadow: 0 4px 24px rgba(0,0,0,.5); line-height: 1;
+}
+.c-text .c-kicker {
+  font-size: 12.5px; letter-spacing: 5px; color: var(--china-red); font-weight: 700;
+}
+.c-text h3 {
+  font-family: var(--font-serif); font-size: clamp(34px, 4vw, 50px);
+  font-weight: 900; letter-spacing: 6px; margin: 12px 0 4px;
+}
+.c-text .c-en {
+  font-size: 12px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase;
+}
+.c-text .c-quote {
+  font-family: var(--font-serif); font-size: 18px; color: var(--deep-red);
+  letter-spacing: 1px; margin: 22px 0; line-height: 1.8;
+}
+.c-text .c-quote::before { content: "「"; color: var(--china-red); }
+.c-text .c-quote::after { content: "」"; color: var(--china-red); }
+.c-text p.desc { font-size: 15.5px; color: var(--ink-soft); max-width: 520px; }
+.c-link {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 28px; font-weight: 700; font-size: 15px; letter-spacing: 3px;
+  color: var(--deep-red);
+}
+.c-link .arrow { transition: transform .3s var(--ease-out); }
+.c-link:hover .arrow { transform: translateX(8px); }
+
+/* 故事横向滚动脉 */
+.story-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,.16); }
+.story-cell {
+  padding: clamp(32px, 4vw, 52px); border-bottom: 1px solid rgba(255,255,255,.16);
+  position: relative; transition: background .3s;
+}
+.story-cell:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.16); }
+.story-cell:hover { background: rgba(255,255,255,.07); }
+.story-cell .era { font-size: 12.5px; letter-spacing: 3px; color: var(--gold); font-weight: 600; }
+.story-cell h3 {
+  font-family: var(--font-serif); font-size: 23px; margin: 10px 0; letter-spacing: 1px; color: #fff;
+}
+.story-cell p { font-size: 14px; color: rgba(255,238,225,.82); }
+.story-cell .read {
+  display: inline-block; margin-top: 16px; font-size: 13px; letter-spacing: 2px;
+  color: var(--gold); font-weight: 600;
+}
+
+/* 研学带 */
+.edu-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); }
+.edu-item {
+  padding: 34px 26px 30px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  transition: background .3s; position: relative;
+}
+.edu-item:last-child { border-right: none; }
+.edu-item:hover { background: rgba(200, 16, 46, 0.04); }
+.edu-item .e-no { font-family: Georgia, serif; font-size: 15px; color: var(--china-red); letter-spacing: 1px; }
+.edu-item h3 { font-family: var(--font-serif); font-size: 19px; font-weight: 800; margin: 10px 0 8px; letter-spacing: 1px; }
+.edu-item p { font-size: 13.5px; color: var(--ink-soft); min-height: 66px; }
+.edu-item .free {
+  display: inline-block; margin-top: 14px; font-size: 12px; font-weight: 700;
+  color: var(--china-red); letter-spacing: 2px;
+}
+
+@media (max-width: 1000px) {
+  .city-row { grid-template-columns: 1fr; gap: 26px; }
+  .city-row.flip .c-media { order: 1; }
+  .city-row.flip .c-text { order: 2; }
+  .story-strip { grid-template-columns: 1fr; }
+  .story-cell:nth-child(odd) { border-right: none; }
+  .edu-list { grid-template-columns: 1fr 1fr; }
+  .edu-item:nth-child(2n) { border-right: none; }
+  .stats-card { grid-template-columns: repeat(2, 1fr); gap: 26px 0; }
+  .stat:nth-child(2) { border-right: none; }
+  .hero-vertical { display: none; }
+}
+@media (max-width: 600px) {
+  .edu-list { grid-template-columns: 1fr; }
+  .edu-item { border-right: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">⭐ 非营利公益平台 · 弘扬江西红色文化 · 传承革命精神 ⭐</div>
+
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="赣水红途 首页">
+      <img class="logo-img" src="assets/logo-horizontal.svg" alt="赣水红途 logo">
+    </a>
+    <nav class="nav-links">
+      <a href="jinggangshan.html">井冈山</a>
+      <a href="ruijin.html">瑞金</a>
+      <a href="nanchang.html">南昌</a>
+      <a href="yudu.html">于都</a>
+      <a href="stories.html">红色故事</a>
+      <a href="edu.html">研学活动</a>
+    </nav>
+    <a class="nav-cta" href="edu.html">参与研学</a>
+  </div>
+</header>
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <canvas id="ember-canvas"></canvas>
+  <div class="hero-vertical">星星之火 可以燎原</div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-kicker" data-anim>中国革命摇篮 · 江西红土地</div>
+      <h1 class="hero-title" data-anim data-anim-delay="100">赣水红途<br>重走<span class="gold">红军长征</span>路</h1>
+      <p class="hero-lead" data-anim data-anim-delay="220">
+        从井冈山的星星之火，到瑞金的红色政权，从南昌城头的枪声，到于都河畔的长征启程——
+        讲好中国共产党在江西的革命故事，守护革命根据地的历史记忆。
+      </p>
+      <div class="hero-actions" data-anim data-anim-delay="340">
+        <a class="btn-red" href="#cities">走进四大圣地 <span>→</span></a>
+        <a class="btn-ghost btn-line light" href="stories.html">聆听红色故事</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数据带 -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stats-card" data-anim>
+      <div class="stat"><div class="num" data-count="132">0</div><div class="label">红色遗址遗迹</div></div>
+      <div class="stat"><div class="num" data-count="11">0</div><div class="label">革命历史场馆</div></div>
+      <div class="stat"><div class="num" data-count="58">0</div><div class="label">红色研学课程</div></div>
+      <div class="stat"><div class="num" data-count="100">0</div><div class="label">公益开放 <span>%</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 四大革命圣地 ============ -->
+<section class="chapter" id="cities">
+  <div class="container">
+    <div class="chapter-head" data-anim>
+      <div class="chapter-no">壹</div>
+      <h2 class="chapter-title">四大革命圣地</h2>
+      <p class="chapter-note">每一片热土，都镌刻着中国共产党的奋斗足迹 · 点击进入景点详解</p>
+    </div>
+
+    <div class="city-row" data-anim>
+      <a class="c-media reveal-img" href="jinggangshan.html">
+        <span class="c-no">01</span>
+        <img src="assets/jinggangshan.jpg" alt="井冈山革命根据地">
+      </a>
+      <div class="c-text">
+        <div class="c-kicker">中国革命的摇篮</div>
+        <h3>井冈山</h3>
+        <div class="c-en">JINGGANGSHAN · 1927</div>
+        <p class="c-quote">星星之火，从这里开始燎原</p>
+        <p class="desc">中国第一个农村革命根据地。八角楼的灯光、黄洋界的炮声、朱毛会师的红旗——"井冈山精神"由此写进中国革命的基因。</p>
+        <a class="c-link" href="jinggangshan.html">走进井冈山 <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="city-row flip" data-anim>
+      <a class="c-media reveal-img" href="ruijin.html">
+        <span class="c-no">02</span>
+        <img src="assets/ruijin.jpg" alt="瑞金苏维埃临时中央政府旧址">
+      </a>
+      <div class="c-text">
+        <div class="c-kicker">红色故都 · 共和国摇篮</div>
+        <h3>瑞金</h3>
+        <div class="c-en">RUIJIN · 1931</div>
+        <p class="c-quote">红色政权的第一缕曙光</p>
+        <p class="desc">中华苏维埃共和国临时中央政府在此成立。叶坪的谢家祠、沙洲坝的红井、云石山的告别——人民共和国从这里走来。</p>
+        <a class="c-link" href="ruijin.html">走进瑞金 <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="city-row" data-anim>
+      <a class="c-media reveal-img" href="nanchang.html">
+        <span class="c-no">03</span>
+        <img src="assets/nanchang.jpg" alt="南昌八一广场起义纪念塔">
+      </a>
+      <div class="c-text">
+        <div class="c-kicker">军旗升起的地方</div>
+        <h3>南昌</h3>
+        <div class="c-en">NANCHANG · 1927.8.1</div>
+        <p class="c-quote">一声枪响，人民军队诞生</p>
+        <p class="desc">八一南昌起义打响了武装反抗国民党反动派的第一枪。八一广场、起义纪念馆、总指挥部旧址——"八一"从此成为这座城市的名字。</p>
+        <a class="c-link" href="nanchang.html">走进南昌 <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="city-row flip" data-anim>
+      <a class="c-media reveal-img" href="yudu.html">
+        <span class="c-no">04</span>
+        <img src="assets/yudu.jpg" alt="于都河长征第一渡">
+      </a>
+      <div class="c-text">
+        <div class="c-kicker">长征集结出发地</div>
+        <h3>于都</h3>
+        <div class="c-en">YUDU · 1934.10</div>
+        <p class="c-quote">于都河畔，万里长征第一步</p>
+        <p class="desc">1934 年 10 月，中央红军 8.6 万人夜渡于都河。百姓拆门板架浮桥、30 万人共守一个秘密——长征精神从这里出发。</p>
+        <a class="c-link" href="yudu.html">走进于都 <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 红色故事（预览 4 则，详情页见 stories.html）============ -->
+<section class="chapter spirit-zone">
+  <div class="container">
+    <div class="chapter-head" data-anim>
+      <div class="chapter-no">贰</div>
+      <h2 class="chapter-title">红色故事</h2>
+      <p class="chapter-note">精神血脉，代代相传 · 更多故事见「红色故事」页</p>
+    </div>
+    <div class="story-strip">
+      <div class="story-cell" data-anim>
+        <div class="era">1927 · 井冈山时期</div>
+        <h3>朱德的扁担</h3>
+        <p>军长朱德与战士们一起下山挑粮，扁担藏了又被找回，写上名字继续挑。同甘共苦，是井冈山精神的底色。</p>
+        <a class="read" href="story-01.html">阅读全文 →</a>
+      </div>
+      <div class="story-cell" data-anim data-anim-delay="100">
+        <div class="era">1934 · 长征前夕</div>
+        <h3>八万六千人夜渡于都河</h3>
+        <p>百姓拆下门板架浮桥，30 万于都人民共同保守着这个天大的秘密。万里长征，从这条河开始。</p>
+        <a class="read" href="story-02.html">阅读全文 →</a>
+      </div>
+      <div class="story-cell" data-anim data-anim-delay="200">
+        <div class="era">1929 · 苏区岁月</div>
+        <h3>红井的故事</h3>
+        <p>沙洲坝缺水，毛泽东带领军民开挖水井。"吃水不忘挖井人"——一块石碑，一段深情。</p>
+        <a class="read" href="story-03.html">阅读全文 →</a>
+      </div>
+      <div class="story-cell" data-anim data-anim-delay="300">
+        <div class="era">1930s · 苏区岁月</div>
+        <h3>十七棵松的守望</h3>
+        <p>瑞金华屋村 17 位青年参加红军前各种一棵松树。青松参天，勇士未归。守着松树，就是守着信念。</p>
+        <a class="read" href="story-04.html">阅读全文 →</a>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:52px;" data-anim>
+      <a class="btn-red" href="stories.html">进入红色故事馆 <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 红色研学 ============ -->
+<section class="chapter" id="edu">
+  <div class="container">
+    <div class="chapter-head" data-anim>
+      <div class="chapter-no">叁</div>
+      <h2 class="chapter-title">红色研学 · 公益同行</h2>
+      <p class="chapter-note">面向青少年与志愿者 · 全程免费</p>
+    </div>
+    <div class="edu-list">
+      <a class="edu-item" href="edu.html" data-anim>
+        <div class="e-no">No.01</div>
+        <h3>小小讲解员培训</h3>
+        <p>红领巾讲述员走进革命旧址，用童声讲述峥嵘岁月</p>
+        <span class="free">✦ 公益免费</span>
+      </a>
+      <a class="edu-item" href="edu.html" data-anim data-anim-delay="100">
+        <div class="e-no">No.02</div>
+        <h3>旧址志愿讲解</h3>
+        <p>大学生志愿者驻点革命旧址，为游客传述苏区故事</p>
+        <span class="free">✦ 公益免费</span>
+      </a>
+      <a class="edu-item" href="edu.html" data-anim data-anim-delay="200">
+        <div class="e-no">No.03</div>
+        <h3>红色研学营</h3>
+        <p>重走长征路主题营，于都河畔集结启程</p>
+        <span class="free">✦ 公益免费</span>
+      </a>
+      <a class="edu-item" href="edu.html" data-anim data-anim-delay="300">
+        <div class="e-no">No.04</div>
+        <h3>校园红色课堂</h3>
+        <p>红色文化进校园，把历史讲给更多孩子听</p>
+        <span class="free">✦ 公益免费</span>
+      </a>
+    </div>
+    <div style="text-align:center; margin-top:52px;" data-anim>
+      <a class="btn-line" href="edu.html">了解研学详情 <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 公益宣言 ============ -->
+<section class="chapter" style="background:var(--paper); text-align:center;">
+  <div class="container" data-anim>
+    <p style="font-size:13px; letter-spacing:6px; color:var(--china-red); font-weight:700;">公益宣言</p>
+    <h2 style="font-family:var(--font-serif); font-size:clamp(28px,4vw,42px); letter-spacing:3px; line-height:1.6; margin-top:22px;">
+      没有商品，没有门票。<br>我们只想把家乡的红色故事，讲给更多人听。
+    </h2>
+    <p style="max-width:640px; margin:24px auto 0; color:var(--ink-soft); font-size:15.5px;">
+      赣水红途由江西学子自发维护，所有内容免费开放。历史资料严格考证，实景图片还原革命现场，只为让红色记忆不被时间冲淡。
+    </p>
+    <div style="margin-top:40px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <span style="background:rgba(200,16,46,.08); color:var(--deep-red); font-size:13.5px; font-weight:600; padding:10px 22px; border-radius:999px; letter-spacing:2px;">✦ 纯公益 · 非营利</span>
+      <span style="background:rgba(200,16,46,.08); color:var(--deep-red); font-size:13.5px; font-weight:600; padding:10px 22px; border-radius:999px; letter-spacing:2px;">✦ 历史考据严谨</span>
+      <span style="background:rgba(200,16,46,.08); color:var(--deep-red); font-size:13.5px; font-weight:600; padding:10px 22px; border-radius:999px; letter-spacing:2px;">✦ 全民免费开放</span>
+      <span style="background:rgba(200,16,46,.08); color:var(--deep-red); font-size:13.5px; font-weight:600; padding:10px 22px; border-radius:999px; letter-spacing:2px;">✦ 由家乡学子共建</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer class="site-footer">
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <img class="foot-logo" src="assets/logo-horizontal-dark.svg" alt="赣水红途 logo">
+      <p>追寻红军长征足迹 · 讲好江西革命故事<br>井冈山精神 | 苏区精神 | 长征精神</p>
+    </div>
+    <div class="foot-col">
+      <h4>革命圣地</h4>
+      <a href="jinggangshan.html">井冈山</a>
+      <a href="ruijin.html">瑞金</a>
+      <a href="nanchang.html">南昌</a>
+      <a href="yudu.html">于都</a>
+    </div>
+    <div class="foot-col">
+      <h4>红色传承</h4>
+      <a href="stories.html">红色故事</a>
+      <a href="edu.html">研学活动</a>
+      <a href="index.html#about">公益宣言</a>
+    </div>
+    <div class="foot-col">
+      <h4>关于平台</h4>
+      <a href="index.html#about">平台初心</a>
+      <a href="#">内容考据说明</a>
+      <a href="#">加入志愿者</a>
+    </div>
+  </div>
+  <div class="container foot-bottom">
+    <span>© 2026 赣水红途 · 江西红色旅游文化平台（非营利公益项目）</span>
+    <span>红星照赣水 · 初心映山河</span>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

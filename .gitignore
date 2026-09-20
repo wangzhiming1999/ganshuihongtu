@@ -1,0 +1,12 @@
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 生成器脚本（构建用，非站点文件）
+# _gen_stories.py 保留：故事页源生成器，便于后续增改
