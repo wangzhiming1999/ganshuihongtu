@@ -13,8 +13,9 @@
     <circle cx="22" cy="17.5" r="3" fill="#FFD9A0" opacity="0.9"/>
   </g>
 
-  <g fill="#F5EDE6" font-family="'Noto Serif SC','Source Han Serif SC','SimSun',serif" font-weight="900" font-size="34" letter-spacing="6">
-    <text x="56" y="36">赣水红途</text>
+  <!-- 中文标准字（衬线印章风，textLength 锁定宽度防止字体 fallback 变形） -->
+  <g fill="#F5EDE6" font-family="'Noto Serif SC','Source Han Serif SC','STZhongsong','SimSun','Microsoft YaHei',serif" font-weight="bold" font-size="34" letter-spacing="6">
+    <text x="56" y="36" textLength="128" lengthAdjust="spacingAndGlyphs">赣水红途</text>
   </g>
   <g fill="#A6948B" font-family="Arial, sans-serif" font-size="7" letter-spacing="1.4">
     <text x="56" y="49">JIANGXI RED HERITAGE</text>

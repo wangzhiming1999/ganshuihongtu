@@ -22,9 +22,9 @@
     <circle cx="22" cy="17.5" r="3" fill="#FFD9A0" opacity="0.85"/>
   </g>
 
-  <!-- 中文标准字（印章感衬线） -->
-  <g fill="#8C0F0D" font-family="'Noto Serif SC','Source Han Serif SC','SimSun',serif" font-weight="900" font-size="34" letter-spacing="6">
-    <text x="56" y="36">赣水红途</text>
+  <!-- 中文标准字（衬线印章风，textLength 锁定宽度防止字体 fallback 变形） -->
+  <g fill="#8C0F0D" font-family="'Noto Serif SC','Source Han Serif SC','STZhongsong','SimSun','Microsoft YaHei',serif" font-weight="bold" font-size="34" letter-spacing="6">
+    <text x="56" y="36" textLength="128" lengthAdjust="spacingAndGlyphs">赣水红途</text>
   </g>
 
   <!-- 右侧竖排小字英文 -->
