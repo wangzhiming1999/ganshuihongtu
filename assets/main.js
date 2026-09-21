@@ -3,7 +3,20 @@
   "use strict";
 
   /* ===== 进场动效（fade-up）===== */
+  /* 兜底：如果 JS 因任何原因没有执行完 observer 回调，滚动 3 秒后强制显示全部内容 */
   var els = document.querySelectorAll("[data-anim]");
+  setTimeout(function () {
+    els.forEach(function (el) {
+      if (el.classList.contains("anim-done")) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        el.style.opacity = 1;
+        el.style.transform = "none";
+        el.style.clipPath = "inset(0% 0% 0% 0% round 18px)";
+        el.classList.add("anim-done");
+      }
+    });
+  }, 3000);
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -16,12 +29,13 @@
         el.style.opacity = 1;
         el.style.transform = "none";
         el.style.clipPath = "inset(0% 0% 0% 0% round 18px)";
+        el.classList.add("anim-done");
         io.unobserve(el);
       });
     }, { threshold: 0.12 });
     els.forEach(function (el) { io.observe(el); });
   } else {
-    els.forEach(function (el) { el.style.opacity = 1; el.style.transform = "none"; });
+    els.forEach(function (el) { el.style.opacity = 1; el.style.transform = "none"; el.classList.add("anim-done"); });
   }
 
   /* ===== 数字滚动 ===== */
@@ -75,6 +89,8 @@
   /* ===== Canvas 粒子：余烬飘散「灰飞烟灭」===== */
   var canvas = document.getElementById("ember-canvas");
   if (canvas) {
+    /* canvas 铺满 hero、置于内容下层（防止内联元素默认尺寸撑布局） */
+    canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;";
     var ctx = canvas.getContext("2d");
     var host = canvas.parentElement;
     var W, H, particles;
