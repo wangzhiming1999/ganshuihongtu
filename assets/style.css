@@ -474,3 +474,43 @@ a { text-decoration: none; color: inherit; }
   .ps-link.next { text-align: left; align-items: flex-start; border-top: 1px solid var(--line); }
   .foot-grid { grid-template-columns: 1fr; }
 }
+
+/* ============ 移动端兼容补强 ============ */
+@media (max-width: 1000px) {
+  .topbar { font-size: 11px; letter-spacing: 1.5px; padding: 8px 12px; }
+  .chapter-note { display: block; text-align: left; margin-left: 0; max-width: none; }
+  .spirit-grid { grid-template-columns: 1fr; }
+  .relic-grid { grid-template-columns: 1fr; }
+  .song-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  /* 导航收敛：链接隐藏，仅 logo + CTA */
+  .nav-inner { height: 60px; }
+  .brand { font-size: 19px; letter-spacing: 2px; }
+  .nav-cta { padding: 8px 18px; font-size: 13px; }
+  /* Hero 收敛 */
+  .hero-inner { padding: 96px 0 64px; }
+  .hero-title { font-size: clamp(38px, 10.5vw, 60px); letter-spacing: 5px; }
+  .hero-lead { font-size: 15px; line-height: 1.9; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero-actions .btn-red, .hero-actions .btn-ghost { justify-content: center; }
+  .hero-meta { gap: 20px 32px; }
+  /* 章节头与卡片 */
+  .chapter { padding: 64px 0; }
+  .chapter-head { gap: 12px; }
+  .chapter-no { font-size: 44px; }
+  .chapter-title { font-size: 25px; letter-spacing: 2px; }
+  .relic-grid { grid-template-columns: 1fr; }
+  .song-grid { grid-template-columns: 1fr; }
+  .spot-row { grid-template-columns: 1fr; gap: 14px; padding: 28px 0; }
+  .spot-row .s-img { order: -1; max-width: 420px; }
+  /* 页脚 */
+  .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+  .foot-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  /* 按钮 */
+  .btn-red, .btn-ghost { padding: 13px 26px; font-size: 14px; }
+}
+@media (max-width: 600px) {
+  .vertical-char { display: none; }
+  .topbar { display: none; }
+}
