@@ -399,7 +399,7 @@ NAV_TPL = '''    <nav class="nav-links">
       <a href="yudu.html">于都</a>
       <a href="xingguo.html">兴国</a>
       <a href="stories.html">红色故事</a>
-      <a href="edu.html">研学活动</a>
+      <a href="edu.html">红色之旅</a>
     </nav>'''
 
 FOOT_TPL = '''    <div class="foot-col">
@@ -464,7 +464,7 @@ def render(s):
       <img class="logo-img" src="assets/logo-horizontal.svg" alt="赣水红途 logo">
     </a>
 {NAV_TPL}
-    <a class="nav-cta" href="edu.html">参与研学</a>
+    <a class="nav-cta" href="edu.html">红色之旅</a>
   </div>
 </header>
 
@@ -567,14 +567,13 @@ def render(s):
     <div class="foot-col">
       <h4>红色传承</h4>
       <a href="stories.html">红色故事</a>
-      <a href="edu.html">研学活动</a>
+      <a href="edu.html">红色之旅</a>
       <a href="index.html#manifesto">免费开放承诺</a>
     </div>
     <div class="foot-col">
       <h4>关于平台</h4>
       <a href="index.html#manifesto">平台初心</a>
       <a href="#">内容考据说明</a>
-      <a href="#">加入志愿者</a>
     </div>
   </div>
   <div class="container foot-bottom">
