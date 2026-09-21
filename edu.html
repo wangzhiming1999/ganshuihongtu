@@ -61,6 +61,44 @@
   .flow { grid-template-columns: 1fr; }
   .flow .step { border-right: none; }
 }
+
+/* ============ 一日参考行程 ============ */
+.day-plan {
+  max-width: 1080px; margin: -34px auto 64px; position: relative; z-index: 2;
+  background: var(--warm-white); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 14px 36px rgba(43, 29, 24, 0.10);
+}
+.dp-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 26px; border-bottom: 1px solid var(--line);
+  background: linear-gradient(90deg, rgba(200,16,46,.06), transparent);
+}
+.dp-tag {
+  font-family: var(--font-serif); font-weight: 900; letter-spacing: 2px;
+  color: var(--deep-red); font-size: 15px;
+}
+.dp-note { font-size: 12.5px; color: var(--muted); letter-spacing: 1px; }
+.day-steps { display: grid; grid-template-columns: repeat(4, 1fr); }
+.day-step { padding: 24px 22px; border-right: 1px solid var(--line); }
+.day-step:last-child { border-right: none; }
+.d-time {
+  font-family: Georgia, serif; font-size: 13px; font-weight: 700;
+  color: var(--china-red); letter-spacing: 1px; margin-bottom: 8px;
+}
+.day-step h4 { font-family: var(--font-serif); font-size: 15.5px; font-weight: 800; margin-bottom: 6px; }
+.day-step p { font-size: 13px; color: var(--ink-soft); line-height: 1.75; }
+@media (max-width: 1000px) {
+  .day-steps { grid-template-columns: 1fr 1fr; }
+  .day-step:nth-child(2n) { border-right: none; }
+  .day-step { border-bottom: 1px solid var(--line); }
+  .day-step:nth-last-child(-n+2) { border-bottom: none; }
+}
+@media (max-width: 560px) {
+  .day-steps { grid-template-columns: 1fr; }
+  .day-step { border-right: none; border-bottom: 1px solid var(--line); }
+  .day-step:last-child { border-bottom: none; }
+}
 </style>
 </head>
 <body>
@@ -119,6 +157,27 @@
         </div>
       </div>
     </div>
+    <div class="day-plan">
+      <div class="dp-head"><span class="dp-tag">一日参考行程</span><span class="dp-note">按此节奏走，一天不赶不漏</span></div>
+      <div class="day-steps">
+        <div class="day-step" data-anim data-anim-delay="0">
+          <div class="d-time">08:30 · 上午</div>
+          <div class="d-body"><h4>黄洋界哨口</h4><p>趁晨光上界，看云海与炮台，读完那门迫击炮的故事</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="80">
+          <div class="d-time">12:00 · 中午</div>
+          <div class="d-body"><h4>茨坪午餐</h4><p>红米饭南瓜汤——味道本身也是展品</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="160">
+          <div class="d-time">14:00 · 下午</div>
+          <div class="d-body"><h4>八角楼 → 会师广场</h4><p>茅坪看一盏油灯，再到龙江书院走两支队伍握手的庭院</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="240">
+          <div class="d-time">16:30 · 傍晚</div>
+          <div class="d-body"><h4>井冈山革命博物馆</h4><p>3 万件文物收束一天，出门正逢夕阳映山</p></div>
+        </div>
+      </div>
+    </div>
 
     <div class="program flip" data-anim>
       <div class="p-media"><img src="assets/ruijin.webp" alt="红都之路：瑞金—兴国"></div>
@@ -130,6 +189,27 @@
         <p class="desc">建议 2 天：叶坪一苏大会址 → 沙洲坝喝一口红井水 → 二苏大会址 → 云石山"长征第一山"。次日北上兴国：将军馆 23179 颗红星 → 长冈乡调查旧址 → 听一首"哎呀嘞"山歌收尾。</p>
         <div class="p-tags">
           <span>瑞金 · 兴国</span><span>建议 2 天</span><span>瑞金—兴国车程约 1.5h</span>
+        </div>
+      </div>
+    </div>
+    <div class="day-plan">
+      <div class="dp-head"><span class="dp-tag">一日参考行程</span><span class="dp-note">按此节奏走，一天不赶不漏</span></div>
+      <div class="day-steps">
+        <div class="day-step" data-anim data-anim-delay="0">
+          <div class="d-time">08:30 · 上午</div>
+          <div class="d-body"><h4>叶坪一苏大会址</h4><p>在谢家祠堂里，看中华苏维埃共和国的「开国大典」</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="80">
+          <div class="d-time">12:00 · 中午</div>
+          <div class="d-body"><h4>沙洲坝午餐</h4><p>饭后去红井，喝一口 1933 年挖出来的甘甜</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="160">
+          <div class="d-time">14:00 · 下午</div>
+          <div class="d-body"><h4>二苏大 → 云石山</h4><p>看礼堂建筑奇观，再到「长征第一山」读告别电文</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="240">
+          <div class="d-time">17:00 · 傍晚</div>
+          <div class="d-body"><h4>兴国将军馆</h4><p>23179 颗红星灯阵下，听一段「哎呀嘞」山歌收尾</p></div>
         </div>
       </div>
     </div>
@@ -147,6 +227,27 @@
         </div>
       </div>
     </div>
+    <div class="day-plan">
+      <div class="dp-head"><span class="dp-tag">一日参考行程</span><span class="dp-note">按此节奏走，一天不赶不漏</span></div>
+      <div class="day-steps">
+        <div class="day-step" data-anim data-anim-delay="0">
+          <div class="d-time">08:00 · 上午</div>
+          <div class="d-body"><h4>长征出发纪念碑</h4><p>东门渡口看贡江水——30 万人守住秘密的河</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="80">
+          <div class="d-time">11:00 · 上午</div>
+          <div class="d-body"><h4>长征出发纪念馆</h4><p>从一双草鞋到一担皮箩，读懂「开始」二字的重量</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="160">
+          <div class="d-time">14:00 · 下午</div>
+          <div class="d-body"><h4>祁禄山红军小道</h4><p>徒步 2 小时原始山路，走过当年秘密渡河的林间小道</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="240">
+          <div class="d-time">19:00 · 傍晚</div>
+          <div class="d-body"><h4>滨江栈道夜渡灯光</h4><p>看夜渡主题灯光秀——1934 年的那个夜晚就在脚下</p></div>
+        </div>
+      </div>
+    </div>
 
     <div class="program flip" data-anim>
       <div class="p-media"><img src="assets/nanchang.webp" alt="军旗之路：南昌"></div>
@@ -158,6 +259,27 @@
         <p class="desc">建议 1~2 天市区线：八一起义纪念馆 → 八一广场纪念塔 → 新四军军部旧址 → 朱德旧居。傍晚串起中山路—百花洲—滕王阁"红色 + 千年豫章"徒步线，夜里到秋水广场看一江两岸的军旗灯光秀。</p>
         <div class="p-tags">
           <span>南昌</span><span>建议 1~2 天</span><span>地铁可全部覆盖</span>
+        </div>
+      </div>
+    </div>
+    <div class="day-plan">
+      <div class="dp-head"><span class="dp-tag">一日参考行程</span><span class="dp-note">按此节奏走，一天不赶不漏</span></div>
+      <div class="day-steps">
+        <div class="day-step" data-anim data-anim-delay="0">
+          <div class="d-time">09:00 · 上午</div>
+          <div class="d-body"><h4>八一起义纪念馆</h4><p>开门第一批进馆，从「危难中奋起」展厅看起</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="80">
+          <div class="d-time">12:00 · 中午</div>
+          <div class="d-body"><h4>中山路午餐</h4><p>瓦罐汤拌粉——起义总指挥部旧址就在隔壁</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="160">
+          <div class="d-time">14:00 · 下午</div>
+          <div class="d-body"><h4>八一广场 → 新四军军部旧址</h4><p>纪念塔下留影，再走进朱德旧居的院落</p></div>
+        </div>
+        <div class="day-step" data-anim data-anim-delay="240">
+          <div class="d-time">17:30 · 傍晚</div>
+          <div class="d-body"><h4>滕王阁 · 一江两岸</h4><p>「红色 + 千年豫章」徒步收尾，秋水广场看军旗灯光秀</p></div>
         </div>
       </div>
     </div>
