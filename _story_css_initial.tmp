@@ -1,5 +1,0 @@
-/* 赣水红途 · 故事详情页补充样式 */
-.story-prose .place {
-  font-size: 13.5px; letter-spacing: 2px; color: var(--muted);
-  margin-bottom: 30px; padding-bottom: 18px; border-bottom: 1px solid var(--line);
-}
